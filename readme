@@ -1,0 +1,18 @@
+Overview
+In this assignment you will work in groups of 2 or 3 to implement a decision tree learning
+algorithm and apply it to a synthetic dataset. You will also implement a pruning strategy in your
+algorithm. You will be given labeled training data, from which you will generate a model. You
+will be given labeled validation data, for which you will report your model's accuracy. You will
+also be given unlabeled test data for which you will generate predictions.
+
+I tried to perform pruning by using concept of reduced error pruning algorithm. I train my tree using the train data and keep the count of each node that has been traversed while executing that train data on my tree including leaf nodes. Then I used below algorithm to perform pruning:
+Step 1: Use breadth first search to collect all nodes of the tree (excluding leaf nodes) in a list
+Step 2: Traverse each node from list (from step 1), if all their nodes are leaf nodes then collect the number of times that leaf node is traversed (using the variable numberOfTimeTraversed).
+Step 3: Sum all the count of traversal of each node (if their entire sub child is a leaf nodes).
+Step 4: The leaf node with highest count is the famous child for that node.
+Step 5: Take the backup of the node and replace the existing node with the famous leaf node.
+Step 6: Measure the accuracy.
+Step 7: If accuracy increased then continue from Step 1, else reverts the node with the original with the backup.
+I choose this strategy because of the following reason:
+1. This is bottom up approach and best way to replace a node using their famous child.
+2. This is faster approach to prune a tree efficiently.
